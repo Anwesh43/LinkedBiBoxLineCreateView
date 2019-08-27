@@ -204,4 +204,26 @@ class BiBoxLineCreateView(ctx : Context) : View(ctx) {
             curr.startUpdating(cb)
         }
     }
+
+    data class Renderer(var view : BiBoxLineCreateView) {
+
+        private val animator : Animator = Animator(view)
+        private val bblc : BiBoxLineCreate = BiBoxLineCreate(0)
+
+        fun render(canvas : Canvas, paint : Paint) {
+            canvas.drawColor(backColor)
+            bblc.draw(canvas, paint)
+            animator.animate {
+                bblc.update {i, scl ->
+                    animator.stop()
+                }
+            }
+        }
+
+        fun handleTap() {
+            bblc.startUpdating {
+                animator.start()
+            }
+        }
+    }
 }
