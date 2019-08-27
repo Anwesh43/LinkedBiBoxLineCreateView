@@ -32,26 +32,28 @@ fun Float.mirrorValue(a : Int, b : Int) : Float {
 }
 fun Float.updateValue(dir : Float, a : Int, b : Int) : Float = mirrorValue(a, b) * dir * scGap
 
-fun Canvas.drawBoxLine(sc1 : Float, sc2 : Float, size : Float, h : Float, paint : Paint) {
+fun Canvas.drawBoxLine(i : Int, sc1 : Float, sc2 : Float, size : Float, h : Float, paint : Paint) {
     val sc11 : Float = sc1.divideScale(0, parts)
     val sc12 : Float = sc1.divideScale(1, parts)
     val oy : Float = (h / 2 + 2 * size)
     val dy : Float = size
-    save()
-    rotate(90f * sc2)
-    save()
-    translate(0f, oy + (dy - oy) * sc11)
-    drawLine(0f, 0f, 0f, 2 * size * (1 - sc12), paint)
-    drawLine(-size * sc12, 0f, size * sc12, 0f, paint)
-    restore()
-    restore()
+    for (j in 0..(parts - 1)) {
+        save()
+        rotate(90f * sc2 * j * (1f - 2 * i))
+        save()
+        translate(0f, oy + (dy - oy) * sc11)
+        drawLine(0f, 0f, 0f, 2 * size * (1 - sc12), paint)
+        drawLine(-size * sc12, 0f, size * sc12, 0f, paint)
+        restore()
+        restore()
+    }
 }
 
 fun Canvas.drawBiBoxLine(sc1 : Float, sc2 : Float, size : Float, h : Float, paint : Paint) {
     for (j in 0..(lines - 1)) {
         save()
         scale(1f, 1f - 2 * j)
-        drawBoxLine(sc1.divideScale(j, lines), sc2.divideScale(j, lines), size, h, paint)
+        drawBoxLine(j, sc1.divideScale(j, lines), sc2.divideScale(j, lines), size, h, paint)
         restore()
     }
 }
