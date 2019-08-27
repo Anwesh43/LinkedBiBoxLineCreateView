@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/LinkedBiBoxLineCreateView.iml" filepath="$PROJECT_DIR$/LinkedBiBoxLineCreateView.iml" />
+      <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
+      <module fileurl="file://$PROJECT_DIR$/biboxlinecreateview/biboxlinecreateview.iml" filepath="$PROJECT_DIR$/biboxlinecreateview/biboxlinecreateview.iml" />
+    </modules>
+  </component>
+</project>
