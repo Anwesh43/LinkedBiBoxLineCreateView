@@ -226,4 +226,13 @@ class BiBoxLineCreateView(ctx : Context) : View(ctx) {
             }
         }
     }
+
+    companion object {
+
+        fun create(activity : Activity) : BiBoxLineCreateView {
+            val view : BiBoxLineCreateView = BiBoxLineCreateView(activity)
+            activity.setContentView(view)
+            return view 
+        }
+    }
 }
